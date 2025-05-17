@@ -5,6 +5,12 @@
 
 NUMBER=$1
 
+if [ $# -gt 1 ]
+then
+    echo "Pass only one arg"
+    exit 1
+fi
+
 if [ $NUMBER -lt 0 ]
 then
     echo "Given number is negative number"
