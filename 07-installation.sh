@@ -23,6 +23,7 @@ then
     else
         echo "MYSQL installation Failed"
         exit 1
+    fi
 else
     echo "MYSQL already installed... Nothing to do"
 fi
