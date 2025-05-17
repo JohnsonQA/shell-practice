@@ -5,11 +5,11 @@
 
 NUMBER=$1
 
-if [ $NUMBER -lt 10 ]
+if [ $NUMBER -lt 0 ]
 then
-    echo "Given number is lesser than 10"
+    echo "Given number is positive number"
 else
-    echo "Given number is greater than 10"
+    echo "Given number is negative number"
 fi
 
 
