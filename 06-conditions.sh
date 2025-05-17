@@ -7,9 +7,9 @@ NUMBER=$1
 
 if [ $NUMBER -lt 0 ]
 then
-    echo "Given number is positive number"
-else
     echo "Given number is negative number"
+else
+    echo "Given number is positive number"
 fi
 
 
