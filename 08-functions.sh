@@ -8,9 +8,9 @@ USERID=$(id -u)
 
 if [ $USERID -eq 0 ]
 then
-    echo "Running with sudo user..."
+    echo "✅ Running with sudo user..."
 else
-    echo "Run with sudo user to install packages"
+    echo "❌ Run with sudo user to install packages"
     exit 1
 fi
 
@@ -20,9 +20,9 @@ VALIDATE(){
 
     if [ $1 -eq 0 ]
     then
-        echo "$2 installed succesfully..."
+        echo "✅ $2 installed succesfully..."
     else
-        echo "$2 failed to install..."
+        echo "❌ $2 failed to install..."
         exit 1
     fi
 }
@@ -31,7 +31,7 @@ VALIDATE(){
 dnf list installed mysql
 if [ $? -ne 0 ]
 then
-    echo "MySql is not installed. Installing now... "
+    echo "✅ MySql is not installed. Installing now... "
     dnf install mysql -y
     VALIDATE $? mysql
 else
@@ -42,7 +42,7 @@ fi
 dnf list installed python3
 if [ $? -ne 0 ]
 then
-    echo "Python3 is not installed. Installing now... "
+    echo "✅ Python3 is not installed. Installing now... "
     dnf install python3 -y
     VALIDATE $? python3
 else
@@ -54,7 +54,7 @@ fi
 dnf list installed nginx
 if [ $? -ne 0 ]
 then
-    echo "nginx is not installed. Installing now... "
+    echo "✅ nginx is not installed. Installing now... "
     dnf install nginx -y
     VALIDATE $? nginx
 else
