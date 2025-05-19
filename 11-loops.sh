@@ -40,7 +40,8 @@ VALIDATE(){
 }
 
 #Installing packages using loop
-for package in ${PACKAGES[@]}
+#for package in ${PACKAGES[@]}
+for package in $@                  #with this we can pass the package name dynamically as an arguments in runtime
 do
     dnf list installed $package &>>$LOG_FILE
     if [ $? -ne 0 ]
