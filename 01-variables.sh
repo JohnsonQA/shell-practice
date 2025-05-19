@@ -13,5 +13,5 @@ echo "$PERSON1:: Hey $PERSON2, How you doing?"
 echo "$PERSON2:: Hey $PERSON1!! I am doing great. How about you?"
 echo "$PERSON1:: Doing great. When are you going to Mars?"
 echo "$PERSON2:: May be end of the year. You wanna join in?"
-echo "$PERSON1:: Yes ofcourse!! would love to visit Mars with you :)"
+echo "$PERSON1:: Yep ofcourse!! would love to visit Mars with you :)"
 
