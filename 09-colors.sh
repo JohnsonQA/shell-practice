@@ -5,12 +5,16 @@
 #check wethere you are running with sudo user
 
 USERID=$(id -u)
+R=\e[31m
+G=\e[32m
+Y=\e[33m
+N=\e[0m
 
 if [ $USERID -eq 0 ]   
 then
-    echo "✅ Running with sudo user..."
+    echo "Running with sudo user..."
 else
-    echo "❌ Run with sudo user to install packages"
+    echo -e "$R Run with sudo user to install packages $N"
     exit 1
 fi
 
@@ -20,9 +24,9 @@ VALIDATE(){
 
     if [ $1 -eq 0 ]
     then
-        echo "✅ $2 installed succesfully..."
+        echo -e "$G $2 installed succesfully... $N"
     else
-        echo "❌ $2 failed to install..."
+        echo -e "$R $2 failed to install... $N"
         exit 1
     fi
 }
@@ -31,22 +35,22 @@ VALIDATE(){
 dnf list installed mysql
 if [ $? -ne 0 ]
 then
-    echo "✅ MySql is not installed. Installing now... "
+    echo "MySql is not installed. Installing now... "
     dnf install mysql -y
     VALIDATE $? mysql
 else
-    echo "Mysql already installed. Nothing to do"
+    echo -e "$Y Mysql already installed. Nothing to do $N"
 fi
 
 #Installing python3 package
 dnf list installed python3
 if [ $? -ne 0 ]
 then
-    echo "✅ Python3 is not installed. Installing now... "
+    echo "Python3 is not installed. Installing now... "
     dnf install python3 -y
     VALIDATE $? python3
 else
-    echo "python3 already installed. Nothing to do"
+    echo -e "$Y python3 already installed. Nothing to do $N"
 fi
 
 
@@ -54,10 +58,10 @@ fi
 dnf list installed nginx
 if [ $? -ne 0 ]
 then
-    echo "✅ nginx is not installed. Installing now... "
+    echo "nginx is not installed. Installing now... "
     dnf install nginx -y
     VALIDATE $? nginx
 else
-    echo "nginx already installed. Nothing to do"
+    echo -e "$Y nginx already installed. Nothing to do $N"
 fi
 
