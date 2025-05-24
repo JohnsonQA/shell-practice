@@ -67,7 +67,7 @@ FILES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
 if [[ -n "$FILES" ]]   #-n not empty -z empty. can use anything
 then
     echo "Files found to zip are: $FILES"
-    TIMESTAMP=$(date +"%F %H:%M:%S")  # It gives YYYY-MM-DD HH:MM:SS time
+    TIMESTAMP=$(date +"%F-%H:%M:%S")  # It gives YYYY-MM-DD HH:MM:SS time
     ZIP_FILE=${DEST_DIR}/app-logs-${TIMESTAMP}.zip #created destination dir with .zip extension
     echo -e "$R Printing ZIP File name $ZIP_FILE $N"
     echo $FILES | xargs -n 1 | zip -@ $ZIP_FILE
