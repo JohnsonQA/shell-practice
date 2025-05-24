@@ -28,11 +28,11 @@ else
     exit 1
 fi
 
-FILES_TO_DELETE=$(find $SOUREC_DIR -name "*.log" -mtime +14) 
+FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -mtime +14) 
 
 while IFS= read -r filepath
 do
-    echo -e "$Y Deleting the log files... $N" | tee -a $LOG_FILE
+    echo -e "Deleting the log files: $Y $filepath $N" | tee -a $LOG_FILE
     rm -rf $filepath
 done <<<$FILES_TO_DELETE    #To get the lines from command output then we give <<<
 
