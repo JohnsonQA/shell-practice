@@ -60,9 +60,29 @@ fi
 FILES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
 
 #Check files are present or empty
+#Then give zip file name with timestamp
+#Zip them in Dest dir using ZIP command
+#If succesfully ZIPPED then delete the files from Source Dir
 if [[ ! -z $FILES ]]   #-n not empty -z empty. can use anything
 then
     echo "Files found to zip are: $FILES"
+    TIMESTAMP=$(date +"%F %H:%M:%S")  # It gives YYYY-MM-DD HH:MM:SS time
+    ZIP_FILE=$DEST_DIR/app-logs-$TIMESTAMP.zip #created destination dir with .zip extension
+    echo $FILES | zip -@ $ZIP_FILE
+
+    if [[ -f $ZIP_FILE ]]
+    then
+        echo "Succesfully ZIP files are created"
+        while IFS= read -r filepath
+        do
+            echo -e "Deleting the log files: $Y $filepath $N" | tee -a $LOG_FILE
+            rm -rf $filepath
+        done <<<$FILES
+        
+        echo -e "Log files older than 14 days are deleted from Source Dir $G Sucessfully... $N"
+    else
+        echo -e "ZIP creation $R FAILED $N"
+    fi
 else
     echo -e "No files found. $Y SKIPPING $N"
 fi
