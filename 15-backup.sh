@@ -35,6 +35,7 @@ fi
 
 USAGE(){
     echo -e "$R USAGE :: $N sh 15-backup.sh <source_dir> <dest_dir> <days(optional)>"
+    exit 1
 }
 #Passing 2 args as mandatory. If not passed throw an error
 if [ $# -lt 2 ]
