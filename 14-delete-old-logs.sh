@@ -30,7 +30,7 @@ fi
 
 FILES_TO_DELETE=$(find $SOUREC_DIR -name "*.log" -mtime +14) 
 
-while read -r filepath
+while IFS= read -r filepath
 do
     echo -e "$Y Deleting the log files... $N" | tee -a $LOG_FILE
     rm -rf $filepath
