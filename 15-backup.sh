@@ -46,5 +46,23 @@ fi
 #Check Source and dest directories are exists or not
 if [ ! -d $SOURCE_DIR ]
 then
-    echo -e "$R $SOURCE_DIR doesn't exists $N"
+    echo -e "$R Source Dir $SOURCE_DIR doesn't exists $N"
+    exit 1
+fi
+
+if [ ! -d $DEST_DIR ]
+then
+    echo -e "$R Destination Dir $DEST_DIR doesn't exists $N"
+    exit 1
+fi
+
+#Find files in the source directory
+FILES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
+
+#Check files are present or empty
+if [ ! -z $FILES ]
+then
+    echo "Files found to zip are: $FILES"
+else
+    echo -e "No files found. $Y SKIPPING $N"
 fi
