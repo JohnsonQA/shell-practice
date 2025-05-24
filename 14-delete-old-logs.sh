@@ -39,7 +39,7 @@ done <<<$FILES_TO_DELETE    #To get the lines from command output then we give <
 END_TIME=$(date +%s) 
 TOTAL_TIME=$(($START_TIME - $END_TIME))
 
-echo -e "Logs deleted succesfully. $Y Total Time Taken : $TOTAL_TIME $N" | tee -a $LOG_FILE
+echo -e "Logs deleted succesfully. $Y Total Time Taken : $TOTAL_TIME seconds $N" | tee -a $LOG_FILE
 
 
 
