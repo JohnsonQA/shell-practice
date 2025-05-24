@@ -62,15 +62,16 @@ FILES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
 #Check files are present or empty
 #Then give zip file name with timestamp
 #Zip them in Dest dir using ZIP command
-#If succesfully ZIPPED then delete the files from Source Dir
-if [[ ! -z $FILES ]]   #-n not empty -z empty. can use anything
+#If successfully ZIPPED then delete the files from Source Dir
+#Schedule it using cron Tab to run automatically
+if [[ -n "$FILES" ]]   #-n not empty -z empty. can use anything
 then
     echo "Files found to zip are: $FILES"
     TIMESTAMP=$(date +"%F %H:%M:%S")  # It gives YYYY-MM-DD HH:MM:SS time
     ZIP_FILE=$DEST_DIR/app-logs-$TIMESTAMP.zip #created destination dir with .zip extension
-    echo $FILES | zip -@ $ZIP_FILE
+    echo $FILES | xargs -n 1 | zip -@ $ZIP_FILE
 
-    if [[ -f $ZIP_FILE ]]
+    if [[ -f "$ZIP_FILE" ]]
     then
         echo "Succesfully ZIP files are created"
         while IFS= read -r filepath
