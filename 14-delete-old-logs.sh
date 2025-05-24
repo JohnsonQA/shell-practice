@@ -12,13 +12,13 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-LOG_FOLDER="/var/log/delete-logs"
+LOG_FOLDER="/var/log/shellscript-logs"
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.log"
 SOURCE_DIR="/home/ec2-user/app-logs"
 
 mkdir -p $LOG_FOLDER
-echo -e "$Y Script executing at: $(date) $N" | tee -a $LOG_FILE
+echo -e "Script executing at: $Y $(date) $N" | tee -a $LOG_FILE
 
 if [ $USER_ID -eq 0 ]
 then 
@@ -39,7 +39,7 @@ done <<<$FILES_TO_DELETE    #To get the lines from command output then we give <
 END_TIME=$(date +%s) 
 TOTAL_TIME=$(($START_TIME - $END_TIME))
 
-echo "Logs deleted succesfully. $Y Total Time Taken : $TOTAT_TIME $N" | tee -a $LOG_FILE
+echo -e "Logs deleted succesfully. $Y Total Time Taken : $TOTAT_TIME $N" | tee -a $LOG_FILE
 
 
 
