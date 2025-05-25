@@ -25,14 +25,13 @@ LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.log"
 
 if [ $USER_ID -eq 0 ]
 then 
+    mkdir -p $LOG_FOLDER
+    echo -e "Script executing at: $Y $(date) $N" | tee -a $LOG_FILE
     echo -e "$G Running with root user... $N" | tee -a $LOG_FILE
 else
     echo -e "$R Error: Run with root user $N" | tee -a $LOG_FILE
     exit 1
 fi
-
-mkdir -p $LOG_FOLDER
-echo -e "Script executing at: $Y $(date) $N" | tee -a $LOG_FILE
 
 USAGE(){
     echo -e "$R USAGE :: $N sh 15-backup.sh <source_dir> <dest_dir> <days(optional)>"
