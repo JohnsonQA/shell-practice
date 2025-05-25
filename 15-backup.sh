@@ -73,7 +73,7 @@ FILES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
 if [[ -n "$FILES" ]]   #-n not empty -z empty. can use anything
 then
     echo "Files found to zip are: $FILES"
-    TIMESTAMP=$(date +"%F-%H:%M:%S")  # It gives YYYY-MM-DD HH:MM:SS time
+    TIMESTAMP=$(date +"%F-%H-%M-%S")  # It gives YYYY-MM-DD HH:MM:SS time
     ZIP_FILE=$DEST_DIR/app-logs-$TIMESTAMP.zip #created destination dir with .zip extension
     echo -e "$R Printing ZIP File name $ZIP_FILE $N"
     #echo $FILES | xargs -n 1 | zip -@ $ZIP_FILE
@@ -84,11 +84,11 @@ then
     then
         echo "Succesfully ZIP files are created"
 
-        while IFS= read -r filepath
+       find "$SOURCE_DIR" -name "*.log" -mtime +"$DAYS" -print0 | while IFS= read -r -d '' filepath
         do
             echo -e "Deleting the log files: $Y $filepath $N" | tee -a $LOG_FILE
-            rm -rf $filepath
-        done <<< "$FILES" 
+            rm -rf "$filepath"
+        done
         echo -e "Log files older than "$DAYS" days are deleted from Source Dir $G Sucessfully... $N"
     else
         echo -e "ZIP creation $R FAILED $N"
