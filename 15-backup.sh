@@ -82,7 +82,7 @@ then
     if [[ -f "$ZIP_FILE" ]]
     then
         echo "Succesfully ZIP files are created"
-        find "$SOURCE_DIR" -name "*.log" -mtime +"$DAYS" | while IFS= read -r filepath
+        find "$SOURCE_DIR" -name "*.log" -mtime +"$DAYS" -print0 | while IFS= read -r -d '' filepath
         do
             echo -e "Deleting the log files: $Y $filepath $N" | tee -a $LOG_FILE
             rm -rf $filepath
