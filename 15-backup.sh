@@ -87,6 +87,7 @@ then
        find "$SOURCE_DIR" -name "*.log" -mtime +"$DAYS" -print0 | while IFS= read -r -d '' filepath
         do
             echo -e "Deleting the log files: $Y $filepath $N" | tee -a $LOG_FILE
+            echo ">>> [$filepath]"
             rm -rf "$filepath"
         done
         echo -e "Log files older than "$DAYS" days are deleted from Source Dir $G Sucessfully... $N"
