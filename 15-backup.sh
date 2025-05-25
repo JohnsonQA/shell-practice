@@ -88,7 +88,7 @@ then
         do
             echo -e "Deleting the log files: $Y $filepath $N" | tee -a $LOG_FILE
             rm -rf $filepath
-        done <<< "$FILES" 
+        done < <(find "$SOURCE_DIR" -name "*.log" -mtime +"$DAYS" -print0) 
 
         echo -e "Log files older than "$DAYS" days are deleted from Source Dir $G Sucessfully... $N"
     else
