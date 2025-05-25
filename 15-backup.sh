@@ -28,10 +28,11 @@ SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 #SCRIPT_NAME=$(basename "$0")
 LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.log"
 
+mkdir -p $LOG_FOLDER
+echo -e "Script executing at: $Y $(date) $N" | tee -a $LOG_FILE
+
 if [ $USER_ID -eq 0 ]
 then 
-    mkdir -p $LOG_FOLDER
-    echo -e "Script executing at: $Y $(date) $N" | tee -a $LOG_FILE
     echo -e "$G Running with root user... $N" | tee -a $LOG_FILE
 else
     echo -e "$R Error: Run with root user $N" | tee -a $LOG_FILE
