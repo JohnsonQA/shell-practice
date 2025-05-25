@@ -79,7 +79,6 @@ then
     #find "$SOURCE_DIR" -name "*.log" -mtime +"$DAYS" | zip -@ "$ZIP_FILE"
     find "$SOURCE_DIR" -name "*.log" -mtime +"$DAYS" -print0 | xargs -0 zip -@ "$ZIP_FILE"
 
-
     if [[ -f "$ZIP_FILE" ]]
     then
         echo "Succesfully ZIP files are created"
@@ -87,8 +86,7 @@ then
         do
             echo -e "Deleting the log files: $Y $filepath $N" | tee -a $LOG_FILE
             rm -rf $filepath
-        done <<<$FILES
-        
+        done <<<"$FILES"    
         echo -e "Log files older than 14 days are deleted from Source Dir $G Sucessfully... $N"
     else
         echo -e "ZIP creation $R FAILED $N"
