@@ -9,10 +9,10 @@
 #Then remove the files from source dir
 
 # === Auto re-run with sudo if not root ===
-if [ "$EUID" -ne 0 ]; then
-    echo "Re-running as root using sudo..."
-    exec sudo "$0" "$@"
-fi
+#if [ "$EUID" -ne 0 ]; then
+#    echo "Re-running as root using sudo..."
+#    exec sudo "$0" "$@"
+#fi
 
 SOURCE_DIR=$1  #passing it as runtime arguments
 DEST_DIR=$2
