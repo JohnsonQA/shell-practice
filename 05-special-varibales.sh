@@ -3,7 +3,7 @@
 
 echo "The file name of the script: $0"
 echo "Arguments size passed to a script: $#"
-echo "All varibales passed to the script: $@"
+echo "Varibales passed as an args to the script: $@"
 echo "All varibale passed in double quotes: $*"
 echo "Present working Directory: $PWD"
 echo "Present Home Directory: $HOME"

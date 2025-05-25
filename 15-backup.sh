@@ -19,7 +19,8 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 LOG_FOLDER="/var/log/backup-logs"
-SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
+#SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
+SCRIPT_NAME=$(basename "$0")
 LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.log"
 
 mkdir -p $LOG_FOLDER
