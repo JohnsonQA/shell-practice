@@ -82,11 +82,11 @@ then
     if [[ -f "$ZIP_FILE" ]]
     then
         echo "Succesfully ZIP files are created"
-        while IFS= read -r filepath
+        find "$SOURCE_DIR" -name "*.log" -mtime +"$DAYS" | while IFS= read -r filepath
         do
             echo -e "Deleting the log files: $Y $filepath $N" | tee -a $LOG_FILE
             rm -rf $filepath
-        done <<<"$FILES"    
+        done    
         echo -e "Log files older than 14 days are deleted from Source Dir $G Sucessfully... $N"
     else
         echo -e "ZIP creation $R FAILED $N"
