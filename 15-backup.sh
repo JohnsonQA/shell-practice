@@ -77,15 +77,15 @@ then
     ZIP_FILE=$DEST_DIR/app-logs-$TIMESTAMP.zip #created destination dir with .zip extension
     echo -e "$R Printing ZIP File name $ZIP_FILE $N"
     #echo $FILES | xargs -n 1 | zip -@ $ZIP_FILE
-    echo $FILES | tr ' ' '\n' | zip -@ $ZIP_FILE
+    #echo $FILES | tr ' ' '\n' | zip -@ $ZIP_FILE
     #find "$SOURCE_DIR" -name "*.log" -mtime +"$DAYS" | zip -@ "$ZIP_FILE"
-    #find "$SOURCE_DIR" -name "*.log" -mtime +"$DAYS" -print0 | xargs -0 zip -@ "$ZIP_FILE"
+    find "$SOURCE_DIR" -name "*.log" -mtime +"$DAYS" -print0 | xargs -0 zip -@ "$ZIP_FILE"
 
     if [[ -f "$ZIP_FILE" ]]
     then
         echo "Succesfully ZIP files are created"
 
-        echo $FILES | tr ' ' '\n' | while IFS= read -r filepath
+        echo "$FILES" | tr ' ' '\n' | while IFS= read -r filepath
         do
             echo -e "Deleting the log files: $Y $filepath $N" | tee -a $LOG_FILE
             echo -e "File name : $G $filepath $N"
