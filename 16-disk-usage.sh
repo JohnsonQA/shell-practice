@@ -19,4 +19,4 @@ do
 done <<< $DISK_USAGE
 
 #echo -e $MSG
-sh mail.sh "DevOps Team" "High Disk Usage" $IP_ADDRESS $MSG "Johnson.john3939@gamil.com" "Alert - High Disk Usage" 
+sh mail.sh "DevOps Team" "High Disk Usage" $IP_ADDRESS $MSG "Johnson.john3939@gmail.com" "Alert - High Disk Usage" 
