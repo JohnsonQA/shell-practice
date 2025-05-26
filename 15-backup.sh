@@ -85,7 +85,7 @@ then
     then
         echo "Succesfully ZIP files are created"
 
-        echo "$FILES" | tr ' ' '\n' | while IFS= read -r filepath
+        find "$SOURCE_DIR" -name "*.log" -mtime +"$DAYS" -print0 | while IFS= read -r -d '' filepath
         do
             echo -e "Deleting the log files: $Y $filepath $N" | tee -a $LOG_FILE
             echo -e "File name : $G $filepath $N"
