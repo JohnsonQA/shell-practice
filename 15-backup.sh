@@ -26,7 +26,7 @@ N="\e[0m"
 LOG_FOLDER="/var/log/backup-logs"
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 #SCRIPT_NAME=$(basename "$0")
-LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.log"
+LOG_FILE="$LOG_FOLDER/backup.log"
 
 mkdir -p $LOG_FOLDER
 echo -e "Script executing at: $Y $(date) $N" | tee -a $LOG_FILE
