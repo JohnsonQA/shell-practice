@@ -11,10 +11,9 @@ while IFS= read line
 do
     USAGE=$(echo $line | awk '{print $6F}' | cut -d "%" -f1) 
     PARTITION=$(echo $line | awk '{print $7F}')
-
-    if [ $DISK_USAGE -ge $DISK_THRESHOLD ]
+    if [ $USAGE -ge $DISK_THRESHOLD ]
     then
-        MSG+="High Disk usage of $PARTITION: $USAGE \n"      
+        MSG+="High Disk usage of $PARTITION: $USAGE \n"      #+ concats the previous output with new output and \n and -e works as new line and prints out 
     fi
 done <<< $DISK_USAGE
 
