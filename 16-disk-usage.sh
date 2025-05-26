@@ -9,12 +9,12 @@ MSG=""
 
 while IFS= read line
 do
-    USAGE=$(echo $line | awk '{print $6F}' | cut -d "%" -f1)  #it will read line by line and gives the utilization number
+    USAGE=$(echo $line | awk '{print $6F}' | cut -d "%" -f1) 
     PARTITION=$(echo $line | awk '{print $7F}')
 
     if [ $DISK_USAGE -ge $DISK_THRESHOLD ]
     then
-        MSG+="High Disk usage of $PARTITION: $USAGE \n"      #Since loop resets the everyline + will concantenate all lines. In shell \n and -e uses separte them in lines
+        MSG+="High Disk usage of $PARTITION: $USAGE \n"      
     fi
 done <<< $DISK_USAGE
 
