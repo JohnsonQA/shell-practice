@@ -2,8 +2,8 @@
 
 #Real-Time Use-case: Find the 14 days older files and zip it then move to destination directory
 
-#Script Test Scenarios:
-#Check sourec and destination dir are present or not
+#Test Scenarios:
+#Check source and destination dir are present or not
 #If present, find the files from source and zip them
 #Then move it to destination
 #Then remove the files from source dir
