@@ -1,7 +1,7 @@
 #!/bin/bash
 #userId - id -u or sudo id -u
 
-USERID=$(id -u)
+USERID=$(id -u)   #It provides the userid 0 or 1. If root user output would be 0 else 1
 
 if [ $USERID -ne 0 ]
 then 
