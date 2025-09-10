@@ -2,7 +2,7 @@
 
 #Use case - Install Mysql, nginx, python3 packages by using function
 #Redirect the output into logs folder
-#Display only information on the console
+#Display only required information on the console
 
 USERID=$(id -u)
 R="\e[31m"
@@ -14,8 +14,8 @@ LOGS_FOLDER="/var/log/shell-script-logs"
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)       #It will split the scriptName and gives only 10-logs which is field 1
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 
-mkdir -p $LOGS_FOLDER
-echo -e "$M Script executing at : $N $(date)"  | tee -a $LOG_FILE
+mkdir -p $LOGS_FOLDER  #-p will create folder if not there else it will skip 
+echo -e "$M Script executing at : $N $(date)"  | tee -a $LOG_FILE  #tee command prints on screen and logfile. -a appends
 
 if [ $USERID -eq 0 ]   
 then
@@ -39,7 +39,7 @@ VALIDATE(){
 }
 
 #Installing Mysql package
-dnf list installed mysql &>>$LOG_FILE
+dnf list installed mysql &>>$LOG_FILE  #It will only write to logfile
 if [ $? -ne 0 ]
 then
     echo -e "$Y MySql is not installed. Installing now... $N" | tee -a $LOG_FILE
